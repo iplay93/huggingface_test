@@ -1,5 +1,7 @@
 from transformers import pipeline
 
+from googletrans import Translator
+
 # 1. Sentiment Analysis
 sentiment_pipeline = pipeline("sentiment-analysis")
 print("Sentiment Analysis:")
@@ -22,9 +24,9 @@ qa_input = {
 print(qa_pipeline(qa_input))  # Answer a question based on context
 
 # 4. Translation (English to Korean)
-translator = pipeline("translation", model="Helsinki-NLP/opus-mt-en-ko")
-result = translator("The weather is nice today. Let's go for a walk!", max_length=100)
-print(result)  # Translate sentence to Korean
+translator = Translator()
+result = translator.translate("I am learning machine translation.", src='en', dest='ko')
+print(result.text)
 #translator = pipeline("translation_en_to_fr")
 #print("\nTranslation (EN → FR):")
 #print(translator("Machine learning is amazing!", max_length=40))  # Translate sentence to French
