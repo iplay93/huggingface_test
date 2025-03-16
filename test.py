@@ -21,10 +21,13 @@ qa_input = {
 }
 print(qa_pipeline(qa_input))  # Answer a question based on context
 
-# 4. Translation (English to French)
-translator = pipeline("translation_en_to_fr")
-print("\nTranslation (EN → FR):")
-print(translator("Machine learning is amazing!", max_length=40))  # Translate sentence to French
+# 4. Translation (English to Korean)
+translator = pipeline("translation", model="Helsinki-NLP/opus-mt-en-ko")
+result = translator("The weather is nice today. Let's go for a walk!", max_length=100)
+print(result)  # Translate sentence to Korean
+#translator = pipeline("translation_en_to_fr")
+#print("\nTranslation (EN → FR):")
+#print(translator("Machine learning is amazing!", max_length=40))  # Translate sentence to French
 
 # 5. Named Entity Recognition (NER)
 ner_pipeline = pipeline("ner", grouped_entities=True)
